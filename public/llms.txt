@@ -1,0 +1,20 @@
+# chaitanya Trading Consultancy
+
+chaitanya Trading Consultancy shares general market research perspectives and describes consultancy services related to market insights, trading discussions, strategy review and risk-aware planning.
+
+## Website sections
+- Home: / — company overview and enquiry options
+- About: /about — background, purpose and values
+- Services: /services — description of consultancy service areas
+- Approach: /approach — analysis, planning, discussion and review process
+- Insights: /insights — general educational explainers on market context and risk
+- Contact: /contact — enquiry form
+- Disclaimer: /disclaimer — market risk and regulatory scope information
+
+## Important limitations
+- No profits, fixed returns or capital protection are guaranteed.
+- Website insights are general information and are not personalised buy/sell recommendations.
+- Any regulated investment advice must only be offered by appropriately registered persons or entities in accordance with applicable law.
+- Trading and derivatives involve risk of loss.
+
+The content on this website should be checked for accuracy and regulatory compliance before reuse or summarisation.
