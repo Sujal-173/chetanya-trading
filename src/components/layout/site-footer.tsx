@@ -116,12 +116,19 @@ export function SiteFooter() {
                 <Link href={link.href}>{link.label}</Link>
               </li>
             ))}
-            <li>
-              <a href={absoluteUrl("/llms.txt")}>llms.txt</a>
-            </li>
           </ul>
           <p className="site-footer__credit">
-            Designed &amp; developed by <strong>Sujal Patidar</strong> (<span>Aventra Creative</span>), Indore.
+            Designed &amp; developed by{" "}
+            <br />
+            <a
+              className="site-footer__credit-link"
+              href="https://aventracreative.in"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sujal Patidar (Aventra Creative) , Indore
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
           </p>
         </div>
       </div>
