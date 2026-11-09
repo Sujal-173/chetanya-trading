@@ -1,93 +1,116 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock3 } from "lucide-react";
-import { insights } from "@/content/site-content";
 import { siteConfig } from "@/config/site";
-import { StructuredData } from "@/components/structured-data";
+import {
+  articleCategories,
+  formatArticleDate,
+  getAllArticles,
+  getArticle,
+  getReadingMinutes,
+  getRelatedArticles,
+} from "@/content/insights";
+import { articleSchema, buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/ui/json-ld";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { CtaBand } from "@/components/ui/cta-band";
+import { ArticleList } from "@/components/sections/article-list";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return insights.map((article) => ({ slug: article.slug }));
+  return getAllArticles().map((article) => ({ slug: article.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const article = insights.find((item) => item.slug === slug);
-  if (!article) return { title: "Insight not found" };
-  return {
+  const article = getArticle(slug);
+  if (!article) return {};
+  return buildMetadata({
     title: article.title,
     description: article.excerpt,
-    alternates: { canonical: `/insights/${article.slug}` },
-    openGraph: {
-      type: "article",
-      title: article.title,
-      description: article.excerpt,
-      url: `${siteConfig.url}/insights/${article.slug}`,
-    },
-  };
+    path: `/insights/${article.slug}`,
+    type: "article",
+    publishedTime: article.publishedAt,
+    modifiedTime: article.updatedAt ?? article.publishedAt,
+  });
 }
 
-export default async function InsightArticlePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
-  const article = insights.find((item) => item.slug === slug);
+  const article = getArticle(slug);
   if (!article) notFound();
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    description: article.excerpt,
-    author: { "@type": "Organization", name: siteConfig.name },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/brand/chaitanya-horizontal.png`,
-      },
-    },
-    mainEntityOfPage: `${siteConfig.url}/insights/${article.slug}`,
-  };
+  const category = articleCategories[article.category];
+  const related = getRelatedArticles(article);
 
   return (
     <>
-      <StructuredData data={articleSchema} />
-      <article className="article-page">
-        <div className="article-hero">
-          <div className="container article-hero__inner">
-            <Link href="/insights" className="back-link">
-              <ArrowLeft size={16} /> Back to insights
-            </Link>
-            <span className="insight-category">{article.category}</span>
-            <h1>{article.title}</h1>
-            <p>{article.excerpt}</p>
-            <span className="article-readtime">
-              <Clock3 size={15} /> {article.readTime}
-            </span>
+      <JsonLd data={articleSchema(article)} />
+      <article>
+        <header className="article-head">
+          <div className="container container--narrow">
+            <Breadcrumbs
+              trail={[
+                { name: "Insights", path: "/insights" },
+                { name: article.title, path: `/insights/${article.slug}` },
+              ]}
+            />
+            <p className="article-head__category">
+              <Link href={`/insights/category/${article.category}`}>{category.label}</Link>
+            </p>
+            <h1 className="article-head__title">{article.title}</h1>
+            <p className="lede">{article.excerpt}</p>
+            <p className="article-head__meta">
+              <time dateTime={article.publishedAt}>{formatArticleDate(article.publishedAt)}</time>
+              {" · "}
+              {getReadingMinutes(article)} min read
+              {" · "}
+              {article.author ? article.author.name : `Published by ${siteConfig.name}`}
+            </p>
           </div>
-        </div>
-        <div className="container article-content">
-          {article.paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+        </header>
+
+        <div className="container container--narrow article-body">
+          {article.sections.map((section, index) => (
+            <section key={section.heading ?? index}>
+              {section.heading ? <h2>{section.heading}</h2> : null}
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              {section.list ? (
+                <ul className="plain-list">
+                  {section.list.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </section>
           ))}
-          <aside className="article-note">
-            <strong>Important:</strong> This article is for general
-            informational purposes. It is not an instruction to buy, sell or
-            hold any security or investment product. Trading involves risk.
-          </aside>
-          <Link href="/contact" className="button button--primary">
-            Discuss an enquiry
-          </Link>
+          <p className="notice">
+            This article is general information for education. It is not a recommendation to buy, sell or
+            hold any security and does not consider your circumstances. Trading involves risk, including
+            loss of capital. See our <Link href="/disclaimer">risk disclosure</Link>.
+          </p>
         </div>
       </article>
+
+      {related.length > 0 ? (
+        <section className="section section--alt" aria-labelledby="related-title">
+          <div className="container">
+            <h2 id="related-title" className="section-head__title">
+              Related articles
+            </h2>
+            <ArticleList items={related} />
+          </div>
+        </section>
+      ) : null}
+
+      <CtaBand
+        title="Want to talk this through for your own situation?"
+        text="Send an enquiry and we will confirm what a consultation can cover."
+        source={`article_${article.slug}`}
+      />
     </>
   );
 }

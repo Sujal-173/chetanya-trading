@@ -1,130 +1,128 @@
-import type { Metadata } from "next";
-import { Compass, Eye, ShieldCheck, Target } from "lucide-react";
-import { PageHero } from "@/components/page-hero";
-import { MediaFrame } from "@/components/media-frame";
-import { SectionHeading } from "@/components/section-heading";
-import { CtaPanel } from "@/components/cta-panel";
+import Image from "next/image";
+import desk from "@/assets/images/desk-detail.webp";
+import { aboutContent as about } from "@/content/about";
+import { siteConfig } from "@/config/site";
+import { buildMetadata, webPageSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/ui/json-ld";
+import { PageHeader } from "@/components/ui/page-header";
+import { CtaBand } from "@/components/ui/cta-band";
+import { Reveal } from "@/components/ui/reveal";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about chaitanya Trading Consultancy and its research-led, disciplined and risk-aware approach to market discussions.",
-  alternates: { canonical: "/about" },
-};
+const title = "About";
+const description =
+  "CHAITANYA Trading Consultancy is built on research, transparency and risk awareness. Read our philosophy, vision, mission and the values we work by.";
 
-const principles = [
-  {
-    title: "Our Vision",
-    text: "Build a consultancy known for clear communication, thoughtful research and a disciplined way of looking at markets.",
-    icon: Eye,
-  },
-  {
-    title: "Our Purpose",
-    text: "Help market participants approach decisions with better context, structured thinking and awareness of risk.",
-    icon: Target,
-  },
-  {
-    title: "Our Values",
-    text: "Maintain transparency, respect uncertainty and keep the quality of the process ahead of promises.",
-    icon: ShieldCheck,
-  },
-];
+export const metadata = buildMetadata({ title, description, path: "/about" });
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="ABOUT chaitanya"
-        title="A measured view of the markets. A disciplined way to think."
-        description="chaitanya Trading Consultancy was established with a focus on practical market research, clear discussion and a considered approach to trading decisions."
-        image="/images/office-market-research.webp"
-        imageAlt="Modern professional workspace with market charts"
+      <JsonLd data={webPageSchema({ name: title, description, path: "/about", type: "AboutPage" })} />
+      <PageHeader
+        title="A consultancy built around clear thinking."
+        intro={about.intro[0]}
+        trail={[{ name: "About", path: "/about" }]}
       />
-      <section className="section">
-        <div className="container split-layout split-layout--about-page">
-          <MediaFrame
-            src="/images/workspace-detail.webp"
-            alt="Trading research desk with written notes and market charts"
-            className="about-page-image"
-          />
-          <div className="about-page-copy">
-            <span className="eyebrow">
-              <span className="eyebrow__line" />
-              WHO WE ARE
-            </span>
-            <h2>Research first. Clarity always. Risk in view.</h2>
-            <p>
-              chaitanya Trading Consultancy is a market-focused consultancy
-              built around the idea that better decisions start with better
-              preparation. Market movements can be complex, fast and uncertain.
-              A clear process helps bring structure to the information being
-              considered.
-            </p>
-            <p>
-              Our work is centred on research perspectives, trading process
-              discussions, strategy review and risk-aware planning. We aim to
-              communicate in plain language and make the scope of each
-              engagement clear from the beginning.
-            </p>
-            <p>
-              We do not use guaranteed-return claims or manufactured performance
-              statistics to build trust. A responsible market conversation
-              should acknowledge uncertainty as clearly as it discusses
-              opportunity.
-            </p>
-          </div>
+
+      <section className="section" aria-labelledby="philosophy-title">
+        <div className="container two-col">
+          <Reveal>
+            <h2 id="philosophy-title" className="section-title">
+              {about.philosophy.title}
+            </h2>
+          </Reveal>
+          <Reveal className="prose" delay={60}>
+            <p>{about.intro[1]}</p>
+            {about.philosophy.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </Reveal>
         </div>
       </section>
-      <section className="section section--soft">
+
+      <section className="section section--alt" aria-label="Vision and mission">
+        <div className="container statements">
+          <Reveal className="statements__item">
+            <h2 className="statements__label">Vision</h2>
+            <p className="statements__text">{about.vision}</p>
+          </Reveal>
+          <Reveal className="statements__item" delay={80}>
+            <h2 className="statements__label">Mission</h2>
+            <p className="statements__text">{about.mission}</p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="values-title">
         <div className="container">
-          <SectionHeading
-            eyebrow="WHAT GUIDES US"
-            title="The principles behind our work."
-            description="A consistent set of values shapes how we research, communicate and approach market decisions."
-            align="center"
-          />
-          <div className="principle-grid">
-            {principles.map((item) => {
-              const Icon = item.icon;
-              return (
-                <article className="principle-card" key={item.title}>
-                  <span className="principle-card__icon">
-                    <Icon size={25} />
-                  </span>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              );
-            })}
+          <Reveal className="section-head">
+            <h2 id="values-title" className="section-head__title">
+              Core values
+            </h2>
+            <p className="section-head__text">The commitments we hold ourselves to in every conversation.</p>
+          </Reveal>
+          <dl className="values">
+            {about.values.map((value, index) => (
+              <Reveal key={value.title} className="values__item" delay={(index % 2) * 70}>
+                <dt>{value.title}</dt>
+                <dd>{value.text}</dd>
+              </Reveal>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section className="section section--alt" aria-labelledby="research-title">
+        <div className="container split">
+          <Reveal className="split__media">
+            <Image
+              src={desk}
+              alt="A notebook and pen on a desk in front of a keyboard, with a market chart on the monitor behind"
+              placeholder="blur"
+              sizes="(max-width: 1023px) 100vw, 46vw"
+              className="photo"
+            />
+          </Reveal>
+          <Reveal className="split__copy prose" delay={80}>
+            <h2 id="research-title" className="section-title">
+              {about.research.title}
+            </h2>
+            {about.research.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            <h3 className="prose__subhead">{about.transparency.title}</h3>
+            {about.transparency.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {siteConfig.team.length > 0 ? (
+        <section className="section" aria-labelledby="team-title">
+          <div className="container">
+            <h2 id="team-title" className="section-head__title">
+              The people behind the consultancy
+            </h2>
+            <dl className="values">
+              {siteConfig.team.map((person) => (
+                <div key={person.name} className="values__item">
+                  <dt>
+                    {person.name}, {person.role}
+                  </dt>
+                  {person.bio ? <dd>{person.bio}</dd> : null}
+                </div>
+              ))}
+            </dl>
           </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="container commitment-panel">
-          <span className="commitment-panel__icon">
-            <Compass size={28} />
-          </span>
-          <div>
-            <span className="eyebrow eyebrow--light">
-              <span className="eyebrow__line" />
-              OUR COMMITMENT
-            </span>
-            <h2>Make the process clearer, not the promise bigger.</h2>
-            <p>
-              Markets cannot be controlled. Preparation, transparency and risk
-              awareness can be part of every decision.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="section section--cta">
-        <div className="container">
-          <CtaPanel
-            title="Start with a conversation."
-            description="Tell us about the market topic or trading process you would like to discuss."
-          />
-        </div>
-      </section>
+        </section>
+      ) : null}
+
+      <CtaBand
+        title="Want to know how we would approach your questions?"
+        text="Tell us what you are working on and we will confirm what a consultation can cover."
+        source="about_cta"
+      />
     </>
   );
 }

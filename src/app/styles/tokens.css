@@ -1,0 +1,53 @@
+:root {
+  /* Brand palette */
+  --navy-950: #061629;
+  --navy-900: #0a203a;
+  --blue-600: #075fe8;
+  --blue-700: #0a4fc0;
+  --blue-500: #1595ff;
+  --surface-light: #f5f8fc;
+
+  /* Semantic tokens (light theme) */
+  --bg: #ffffff;
+  --bg-alt: var(--surface-light);
+  --fg: #101d32;
+  /* Brief specifies #65748B; that is ~4.4:1 on #F5F8FC. This is a touch darker to pass WCAG AA. */
+  --fg-muted: #5b6b83;
+  --border: #dce5f0;
+  --border-strong: #b8c6da;
+  --accent: var(--blue-600);
+  --focus: var(--blue-600);
+
+  /* Type */
+  --font-heading: var(--font-manrope), system-ui, "Segoe UI", Arial, sans-serif;
+  --font-body: var(--font-inter), system-ui, "Segoe UI", Arial, sans-serif;
+
+  /* Layout */
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --radius: 6px;
+  --header-h: 5rem;
+  --header-h-compact: 4rem;
+  --section-y: clamp(3.5rem, 7vw, 6.5rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 639px) {
+  :root {
+    --header-h: 4.25rem;
+    --header-h-compact: 3.75rem;
+  }
+}
+
+.theme-dark {
+  --bg: var(--navy-950);
+  --bg-alt: var(--navy-900);
+  --fg: #ffffff;
+  --fg-muted: #a9b8ce;
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.38);
+  --accent: var(--blue-500);
+  --focus: #6bbcff;
+  background: var(--bg);
+  color: var(--fg);
+}

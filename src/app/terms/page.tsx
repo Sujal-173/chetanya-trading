@@ -1,73 +1,84 @@
-import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
+import Link from "next/link";
+import { siteConfig } from "@/config/site";
+import { buildMetadata } from "@/lib/seo";
+import { LegalPage } from "@/components/ui/legal-page";
 
-export const metadata: Metadata = {
-  title: "Terms and Conditions",
-  description:
-    "Terms for using the chaitanya Trading Consultancy website and its general information content.",
-  alternates: { canonical: "/terms" },
-};
+export const metadata = buildMetadata({
+  title: "Terms of use",
+  description: "The terms that apply when you use the CHAITANYA Trading Consultancy website.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
+  const owner = siteConfig.legal.legalName ?? siteConfig.name;
   return (
-    <>
-      <PageHero
-        eyebrow="LEGAL"
-        title="Terms and Conditions"
-        description="Please read these terms before using the website or submitting an enquiry."
-      />
-      <section className="section">
-        <div className="container legal-content">
-          <p className="legal-updated">Last updated: November 2026</p>
-          <h2>1. Website information</h2>
-          <p>
-            This website provides general information about chaitanya Trading
-            Consultancy, its stated areas of work and ways to contact the
-            business. Website content may be updated, changed or removed without
-            notice.
-          </p>
-          <h2>2. No guarantee of outcome</h2>
-          <p>
-            Trading and investing involve risk. No statement on this website
-            guarantees profits, capital protection, a particular return or a
-            successful outcome. Past market behaviour does not determine future
-            results.
-          </p>
-          <h2>3. No reliance on general content</h2>
-          <p>
-            Articles, descriptions and market-related explanations are general
-            information. They are not a substitute for advice based on your
-            circumstances. You remain responsible for your own decisions and
-            should seek independent professional guidance where appropriate.
-          </p>
-          <h2>4. Enquiries and communications</h2>
-          <p>
-            Submitting an enquiry does not create a client relationship, mandate
-            or obligation to provide a service. Any engagement must be
-            separately agreed, including its scope, fees, disclosures and
-            applicable terms.
-          </p>
-          <h2>5. Permitted use</h2>
-          <p>
-            You agree not to misuse the website, attempt unauthorised access,
-            submit malicious code or provide false information through its
-            forms.
-          </p>
-          <h2>6. Intellectual property</h2>
-          <p>
-            Unless otherwise stated, the website design, logo, original copy and
-            other materials are owned by or used with permission by the
-            business. Do not reproduce them for commercial use without
-            permission.
-          </p>
-          <h2>7. Applicable law</h2>
-          <p>
-            These terms are intended to be governed by the laws applicable in
-            India, subject to review and finalisation by the business&apos;s
-            legal adviser before launch.
-          </p>
-        </div>
-      </section>
-    </>
+    <LegalPage
+      title="Terms of use"
+      intro="By using this website you agree to these terms. If you do not agree, please do not use it."
+      trail={[{ name: "Terms of use", path: "/terms" }]}
+      sections={[
+        {
+          heading: "About this website",
+          paragraphs: [
+            `This website is operated by ${owner}. It provides general information about our consultancy and its services.`,
+          ],
+        },
+        {
+          heading: "Information only",
+          paragraphs: [
+            <>
+              Content on this site is general information and education. It is not investment advice, a
+              recommendation, or an offer to buy or sell any security. Please read the{" "}
+              <Link href="/disclaimer">risk disclosure</Link>.
+            </>,
+          ],
+        },
+        {
+          heading: "Enquiries and engagements",
+          paragraphs: [
+            "Sending an enquiry does not create a client relationship or any obligation on either side. Any consultation is subject to a scope that we confirm with you before it begins.",
+          ],
+        },
+        {
+          heading: "Acceptable use",
+          list: [
+            "Do not submit false, misleading or unlawful content through our forms",
+            "Do not attempt to disrupt, probe or gain unauthorised access to the website",
+            "Do not use automated tools to submit enquiries or scrape the site in a way that harms it",
+          ],
+        },
+        {
+          heading: "Intellectual property",
+          paragraphs: [
+            "The text, design, logo and other material on this website belong to us or our licensors. You may view and share pages for personal, non-commercial use, but you may not copy or reuse them commercially without written permission.",
+          ],
+        },
+        {
+          heading: "Links to other sites",
+          paragraphs: ["We are not responsible for the content or practices of sites we link to."],
+        },
+        {
+          heading: "Limitation of liability",
+          paragraphs: [
+            "To the extent the law allows, we are not liable for any loss arising from your use of this website or reliance on its content, including trading or investment losses. Nothing here limits liability that cannot be limited by law.",
+          ],
+        },
+        {
+          heading: "Governing law",
+          paragraphs: [
+            "These terms are governed by the laws of India. Disputes are subject to the courts of competent jurisdiction in India.",
+          ],
+        },
+        {
+          heading: "Changes",
+          paragraphs: [
+            <>
+              We may update these terms and will change the date above when we do. Questions? Please{" "}
+              <Link href="/contact">contact us</Link>.
+            </>,
+          ],
+        },
+      ]}
+    />
   );
 }

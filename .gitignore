@@ -9,3 +9,6 @@ coverage/
 *.log
 .DS_Store
 .vercel
+
+# local lead fallback (contains personal data)
+.data/

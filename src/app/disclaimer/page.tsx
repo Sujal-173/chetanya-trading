@@ -1,95 +1,82 @@
-import type { Metadata } from "next";
-import { PageHero } from "@/components/page-hero";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { buildMetadata } from "@/lib/seo";
+import { LegalPage } from "@/components/ui/legal-page";
 
-export const metadata: Metadata = {
-  title: "Trading and Market Risk Disclaimer",
+export const metadata = buildMetadata({
+  title: "Risk disclosure",
   description:
-    "Important information about market risk, general website content and the regulatory scope of services described by chaitanya Trading Consultancy.",
-  alternates: { canonical: "/disclaimer" },
-};
+    "Risks of trading and investing, the limits of the information on this website, and the regulatory status of CHAITANYA Trading Consultancy.",
+  path: "/disclaimer",
+});
 
 export default function DisclaimerPage() {
+  const { regulatory } = siteConfig.legal;
   return (
-    <>
-      <PageHero
-        eyebrow="IMPORTANT INFORMATION"
-        title="Trading involves risk. Understand it before you act."
-        description="Please read this information carefully before relying on any market-related content on this website."
-      />
-      <section className="section">
-        <div className="container legal-content">
-          <div className="disclaimer-alert">
-            <strong>Risk warning</strong>
-            <p>
-              Trading in securities and derivatives can result in substantial
-              losses. You may lose some or all of the capital you put at risk.
-              No strategy, market view or discussion guarantees a positive
-              result.
-            </p>
-          </div>
-          <h2>General information only</h2>
-          <p>
-            Website pages, insights and explanations are published for general
-            information. They do not constitute a personalised recommendation to
-            buy, sell or hold a security or investment product, and they do not
-            take account of any visitor&apos;s financial circumstances,
-            objectives or risk tolerance.
-          </p>
-          <h2>Regulated activities in India</h2>
-          <p>
-            Depending on the activities actually carried out, the fee model, the
-            audience and how information is communicated, the SEBI Investment
-            Adviser and/or Research Analyst frameworks may be relevant.
-            Personalised advice, public research, specific trading
-            recommendations and general educational information can be treated
-            differently under the applicable regulations and amendments. The
-            label “consultancy” alone does not determine the regulatory
-            classification.
-          </p>
-          <p>
-            Any regulated activity must only be carried out by a person or
-            entity holding the registrations and permissions required for that
-            activity under applicable Indian law. The business must obtain
-            legal/compliance review of its actual service model, client
-            communications, research, trading calls and fee model before
-            offering services or publishing claims about regulatory status.
-          </p>
-          {siteConfig.regulatoryNumber ? (
-            <p>
-              <strong>
-                Registration information supplied by the business owner:
-              </strong>{" "}
-              {siteConfig.regulatoryNumber}. This detail must be verified
-              against the relevant regulator&apos;s official records before
-              publication.
-            </p>
-          ) : (
-            <p>
-              <strong>
-                No SEBI registration number is stated on this website.
-              </strong>{" "}
-              Do not add a registration claim, registration number, logo or
-              wording that could imply regulated status unless it has been
-              independently verified.
-            </p>
-          )}
-          <h2>No assured returns</h2>
-          <p>
-            chaitanya Trading Consultancy does not promise fixed returns,
-            assured profits, guaranteed accuracy or protection from market
-            losses. Any examples or scenarios are illustrative only unless
-            expressly identified and independently substantiated.
-          </p>
-          <h2>Independent judgement</h2>
-          <p>
-            Visitors should independently assess all information, verify current
-            market data and consider advice from appropriately qualified
-            professionals. Past performance and historical patterns are not
-            reliable indicators of future results.
-          </p>
-        </div>
-      </section>
-    </>
+    <LegalPage
+      title="Risk disclosure"
+      intro="Please read this before relying on anything on this website or acting on a discussion with us."
+      trail={[{ name: "Risk disclosure", path: "/disclaimer" }]}
+      sections={[
+        {
+          heading: "Trading involves risk",
+          paragraphs: [
+            "Trading and investing in securities, derivatives and other instruments involve substantial risk, including the loss of some or all of the capital you commit. Leveraged products can lose more than the amount first invested. Only trade with money you can afford to lose.",
+            "Past performance, where mentioned anywhere, does not indicate or guarantee future results.",
+          ],
+        },
+        {
+          heading: "No guarantee of profit or returns",
+          paragraphs: [
+            "CHAITANYA Trading Consultancy does not guarantee profits, returns or any outcome. No view, analysis, method or conversation can remove market risk. We do not publish performance figures, and we do not use testimonials to suggest results.",
+          ],
+        },
+        {
+          heading: "General information, not personalised advice",
+          paragraphs: [
+            "Content on this website, including articles, is general information and education. It is not a recommendation to buy, sell or hold any security and does not take account of your objectives, finances or risk tolerance. Consultations are discussions about process, market context and risk. We do not manage money, operate accounts or place trades on anyone's behalf.",
+          ],
+        },
+        {
+          heading: "Regulatory status",
+          paragraphs: regulatory.registrationNumber
+            ? [
+                `${siteConfig.name} states the following registration: ${regulatory.authority}${regulatory.registrationType ? ` ${regulatory.registrationType}` : ""}, registration number ${regulatory.registrationNumber}. You can verify registrations directly with the regulator.`,
+              ]
+            : [
+                "This website does not claim registration with the Securities and Exchange Board of India (SEBI) or any other regulator, and nothing here should be read as implying that we are registered as an investment adviser or research analyst.",
+                <>
+                  If you want security-specific advice, speak to an adviser who is registered for that
+                  purpose. Registrations can be checked on the{" "}
+                  <a href="https://www.sebi.gov.in/" target="_blank" rel="noopener noreferrer">
+                    SEBI website<span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                  .
+                </>,
+              ],
+        },
+        {
+          heading: "Your responsibility",
+          paragraphs: [
+            "Any decision to trade or invest is yours alone. Consider your own circumstances and, where appropriate, take advice from a suitably qualified and registered professional before acting. We accept no responsibility for losses arising from decisions made using information from this website.",
+          ],
+        },
+        {
+          heading: "Third-party information",
+          paragraphs: [
+            "Where we refer to third-party sites or data, we do not control and are not responsible for their accuracy or availability.",
+          ],
+        },
+        {
+          heading: "Questions",
+          paragraphs: [
+            <>
+              If anything here is unclear, please <Link href="/contact">contact us</Link> before relying on
+              our services.
+            </>,
+          ],
+        },
+      ]}
+    />
   );
 }

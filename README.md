@@ -1,132 +1,130 @@
-# chaitanya Trading Consultancy
+# CHAITANYA Trading Consultancy: website
 
-A responsive multi-page consultancy website built with the Next.js App Router, TypeScript, React, Tailwind CSS v4.3, React Hook Form 7, Zod 4, Lucide icons and Google Sheets lead capture.
+A Next.js 16 (App Router, React 19, TypeScript) website for **CHAITANYA Trading
+Consultancy**: a research-led trading consultancy. It is deliberately **not** a
+trading academy, course seller or signal service, and it makes no performance
+or regulatory claims it cannot support.
 
-## Included
-
-- Responsive home, About, Services, Approach, Insights, Contact and legal pages.
-- The supplied chaitanya logo, prepared as a transparent horizontal brand lockup for the site header and footer.
-- Locally hosted WebP workspace images. These generated visual assets are illustrative, not photographs of the actual company premises or team; replace them with verified business photography when available. The layout uses `next/image`, fixed aspect-ratio containers, `fill`, `sizes` and `object-fit: cover` so images resize without stretching or breaking the layout.
-- A first-visit enquiry modal that opens after a short delay, remembers dismissal in browser storage and can be reopened from the navigation and page CTAs.
-- Form validation on both client and server, a honeypot field, same-origin checking and rate limiting.
-- Server-side Google Sheets API integration. Credentials stay on the server and are never exposed through `NEXT_PUBLIC_` variables.
-- SEO metadata, canonical URLs, Open Graph and Twitter metadata, generated social share image, sitemap, robots rules, web manifest, organization/website/article/FAQ structured data and an `llms.txt` reference file.
-- Privacy, Terms and Disclaimer pages. No return guarantees, fabricated statistics, or invented contact details are included.
-
-## Stack
-
-- Next.js `16.4.5` App Router
-- React `19.3.1` and TypeScript
-- Tailwind CSS v4.3 through `@tailwindcss/postcss`, with custom design tokens and responsive component styles
-- React Hook Form + Zod
-- Lucide React
-- Google Sheets API via `googleapis`
-- Upstash Redis rate limiting (required for production; a local in-memory fallback is provided for development)
-
-## 1. Install and run
-
-Use Node.js 20.19+ (Node.js 22 LTS is recommended) and npm.
+## Quick start
 
 ```bash
 npm install
-cp .env.example .env.local
-npm run dev
+cp .env.example .env.local     # then fill in what you have
+npm run dev                    # http://localhost:3000
 ```
 
-Open `http://localhost:3000`.
+| Script | Purpose |
+| --- | --- |
+| `npm run dev` | Development server |
+| `npm run build` / `npm start` | Production build and server |
+| `npm run typecheck` | TypeScript check |
+| `npm run lint` | ESLint |
 
-## 2. Configure the business information
+Requires Node 20.9 or newer.
 
-Edit `.env.local` before launch:
+## Pages
 
-```env
-NEXT_PUBLIC_SITE_URL=https://your-real-domain.in
-NEXT_PUBLIC_SITE_NAME=chaitanya Trading Consultancy
-NEXT_PUBLIC_CITY=Indore
-NEXT_PUBLIC_REGION=Madhya Pradesh
-NEXT_PUBLIC_COUNTRY=India
-NEXT_PUBLIC_PHONE=+91XXXXXXXXXX
-NEXT_PUBLIC_EMAIL=verified-business-email@example.com
-NEXT_PUBLIC_WHATSAPP=91XXXXXXXXXX
-NEXT_PUBLIC_LINKEDIN_URL=
-NEXT_PUBLIC_INSTAGRAM_URL=
-NEXT_PUBLIC_YOUTUBE_URL=
-NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
-```
+`/` Home, `/about`, `/services`, `/approach`, `/insights` (index, `/insights/[slug]`,
+`/insights/category/[category]`), `/contact`, `/disclaimer` (risk disclosure),
+`/privacy-policy`, `/terms`. Also generated: `/sitemap.xml`, `/robots.txt`,
+`/llms.txt`, `/manifest.webmanifest`, `/opengraph-image`.
 
-Only enter contact details and social profiles controlled by the business. The phone, email, WhatsApp number and social links are deliberately blank in `.env.example`; the project does not use sample contact numbers.
+## Where to change things
 
-## 3. Connect Google Sheets for leads
+Nothing about the business is hardcoded in components.
 
-The website uses Google Sheets because the supplied design reference calls for a spreadsheet lead inbox. The page copy and service definitions are centralized in `src/content/site-content.ts`; business contact details and site-specific settings are environment-driven in `src/config/site.ts`. The spreadsheet must be online in Google Drive; a local `.xlsx` file on a laptop cannot receive live website submissions by itself.
+| To change | Edit |
+| --- | --- |
+| Company name, contact details, address, hours, social links, legal fields, navigation, popup delay, SEO defaults | `src/config/site.ts` (values come from `NEXT_PUBLIC_*` env vars; see `.env.example`) |
+| Service descriptions | `src/content/services.ts` |
+| The four-step process | `src/content/approach.ts` |
+| FAQs (also feed the FAQ structured data) | `src/content/faqs.ts` |
+| Home and About copy | `src/content/home.ts`, `src/content/about.ts` |
+| Policy pages | `src/app/privacy-policy`, `terms`, `disclaimer` |
+| Colours, spacing, type scale | `src/app/styles/tokens.css` |
 
-1. Create or select a Google Cloud project.
-2. Enable the **Google Sheets API**.
-3. Create a service account and generate a JSON key.
-4. Create a Google spreadsheet and add a tab named `Lead Enquiries` (or set another tab name in the environment).
-5. Share the spreadsheet with the service account email and grant **Editor** access.
-6. Add these values to `.env.local` or your hosting provider's server environment:
+### Publishing an article
 
-```env
-GOOGLE_SHEETS_SPREADSHEET_ID=your_spreadsheet_id
-GOOGLE_SHEETS_TAB_NAME=Lead Enquiries
-GOOGLE_SERVICE_ACCOUNT_EMAIL=your-service-account@your-project.iam.gserviceaccount.com
-GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n"
-```
+Add an object to the array in `src/content/insights/articles.ts` (slug, title,
+excerpt, category, `publishedAt`, sections). The listing, article page, category
+page, related articles, sitemap, JSON-LD and `llms.txt` all update automatically.
+Add an `author` only when the person's identity is verified; otherwise the article
+is credited to the consultancy. Do not publish live market commentary or
+performance claims unless verified.
 
-7. Add this header row to row 1 of the spreadsheet:
+## Enquiry forms and Google Sheets
 
-| Created At | Full Name | Email | Phone | Interest | Message | Page | Source | Consent |
-| ---------- | --------- | ----- | ----- | -------- | ------- | ---- | ------ | ------- |
+Both forms (popup and contact) post to `/api/leads`. Setup is in
+[`docs/GOOGLE-SHEETS-SETUP.md`](docs/GOOGLE-SHEETS-SETUP.md).
 
-The API appends each valid enquiry as a new row using the `RAW` input mode to reduce spreadsheet formula-injection risk. If the credentials or spreadsheet access are not configured, the form returns an error instead of falsely claiming that the enquiry was saved.
+The route validates on the server with the same rules as the browser, sanitises
+input (including spreadsheet formula injection), and applies, in order: JSON-only
+and same-origin checks, a 12 KB body limit, a hidden honeypot field, a minimum
+fill-time check, optional Cloudflare Turnstile, per-IP rate limiting (5 per 10
+minutes) and 24-hour duplicate detection. Each lead gets an ID such as
+`CTC-20261108-4D76E8`, an IST timestamp, page source, campaign source (from UTM
+parameters or referrer) and `Lead Status = New`.
 
-Google Sheets API reference: https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets.values/append
+If Google Sheets fails, it retries, then saves to a durable Redis queue. If
+nothing can store the lead, the visitor is told it was **not** saved. A fake
+success message is never shown. Server logs contain the lead ID and a short error
+only, never personal data.
 
-## 4. Production rate limiting
+## First-visit popup
 
-Before enabling lead capture in production, configure an Upstash Redis database and set:
+Opens once after `NEXT_PUBLIC_POPUP_DELAY_MS` (extra 5 s on phones), never on
+`/contact`, never again after it is closed (remembered in localStorage), and can
+be reopened from any "Discuss your requirements" button. It traps focus, closes
+on Escape, locks background scroll, returns focus to what opened it, becomes a
+bottom sheet on phones, and respects reduced-motion settings. Disable with
+`NEXT_PUBLIC_POPUP_ENABLED=false`.
 
-```env
-UPSTASH_REDIS_REST_URL=https://your-database.upstash.io
-UPSTASH_REDIS_REST_TOKEN=your-secret-token
-```
+## Design system and performance notes
 
-The included local in-memory rate limiter is development-only. The API refuses production submissions until the shared rate limiter is configured, because process memory is not shared across serverless instances.
+- Palette from the brief. The brief's secondary text colour `#65748B` is about 4.4:1 on the light background, just under WCAG AA, so `--fg-muted` is `#5B6B83`.
+- The official logo has light lettering, so the header and footer stay navy.
+- Headings Manrope, body Inter, both **self-hosted** (`src/app/fonts/`), so builds and visitors make no requests to Google Fonts.
+- Server Components by default. Client components are limited to header, drawer, popup, forms, timeline, services index and one shared scroll-reveal controller. Motion loads lazily (`LazyMotion`), and the drawer and popup code load only when opened.
+- Hero entrance and page entrance are CSS-only, so nothing waits on JavaScript.
+- Security headers are set in `next.config.ts`. `script-src` is intentionally not restricted (Next.js and JSON-LD use inline scripts and a nonce-based policy would force dynamic rendering); `frame-ancestors`, `base-uri`, `form-action` and `object-src` are locked down.
 
-## 5. SEO, AEO and local/GEO setup
+### Replacing images
 
-The code provides the technical foundation, but no code can guarantee rankings or AI-search citations. Before launch:
+Images live in `src/assets/images/` and are imported statically, so Next.js knows
+their dimensions (no layout shift) and generates blur placeholders and AVIF/WebP
+sizes. To replace one, drop a new file over it (keep the file name, or update the
+import) and update the `alt` text where it is used. Use real, licensed photography.
 
-1. Set `NEXT_PUBLIC_SITE_URL` to the canonical production domain.
-2. Add the exact verified phone, email, service area and official social URLs.
-3. Verify the domain in Google Search Console and add the verification token.
-4. Submit `https://your-real-domain.in/sitemap.xml` in Search Console and inspect `https://your-real-domain.in/robots.txt`.
-5. Create and verify the business's Google Business Profile if it serves customers at an eligible real location. Use the exact real business name, address/service area, phone and website consistently.
-6. Add real business photos, actual staff/founder details and accurate service descriptions when the owner supplies them. Do not add fabricated testimonials, years of experience, performance numbers or star ratings.
-7. Publish genuinely useful, reviewed market explainers on a consistent schedule. Keep article dates and authorship accurate.
-8. Add an analytics/consent setup only after selecting the provider and updating the Privacy Policy.
+## Search visibility (SEO, AEO, GEO)
 
-The project includes page-specific metadata, canonical URLs, Open Graph/Twitter cards, Organization and WebSite structured data, FAQ and Article structured data, accessible question-and-answer content, sitemap/robots and `public/llms.txt`. These make the site easier to understand; they do not guarantee rich results, ranking positions or generative-search inclusion.
+Unique titles and descriptions per page, canonical URLs, Open Graph and X cards,
+sitemap, robots, visible breadcrumbs with `BreadcrumbList`, and JSON-LD for
+`Organization`, `WebSite`, `WebPage`/`AboutPage`/`ContactPage`/`CollectionPage`,
+`Service`, `Article` and `FAQPage` (only for visible FAQs). `LocalBusiness` is
+intentionally **not** used: it should only be added once a verified street address
+and Google Business Profile exist. `llms.txt` is generated from the same config
+and content as the site and is a supplementary aid only. None of this guarantees
+rankings or AI citations.
 
-## 6. Legal and regulatory review — required before launch
+After launch: verify the domain in Google Search Console and submit
+`/sitemap.xml`, test key pages with Google's Rich Results Test, and run
+PageSpeed Insights on the live URL.
 
-This is a website implementation, not legal or regulatory approval. In India, the SEBI Investment Adviser framework can apply based on what a person actually provides and whether it is provided for consideration; the label “consultancy” does not automatically remove regulatory obligations. Review the actual service model, client communications, fee model, marketing claims, public research and any security-specific/personalised advice against both the Investment Adviser and Research Analyst frameworks with an appropriately qualified compliance professional before publishing or accepting engagements. The IA regulations were last amended on November 25, 2025, the IA Master Circular is dated February 6, 2026, and SEBI lists the Research Analyst regulations as amended on October 10, 2026. Do not claim SEBI registration or show a registration number unless it is genuine and verified.
+## Deployment (Vercel)
 
-Official references:
+1. Push the repository to GitHub and import it in Vercel (framework: Next.js; no build overrides).
+2. Add the environment variables from `.env.example`. At minimum: `NEXT_PUBLIC_SITE_URL`, the contact details you have, the four `GOOGLE_*` values, and (recommended) the two `UPSTASH_*` values.
+3. Deploy, then submit a test enquiry and confirm a row appears in the sheet.
+4. Add the custom domain, and make sure `NEXT_PUBLIC_SITE_URL` matches it exactly.
 
-- SEBI Investment Advisers Regulations: https://www.sebi.gov.in/legal/regulations/nov-2025/securities-and-exchange-board-of-india-investment-advisers-regulations-2013-and-securities-last-amended-on-november-25-2025-_98246.html
-- SEBI Master Circular for Investment Advisers (6 February 2026): https://www.sebi.gov.in/legal/master-circulars/feb-2026/master-circular-for-investment-advisers_99569.html
-- SEBI Research Analysts regulations (current regulation list): https://www.sebi.gov.in/legal/regulations/oct-2026/securities-and-exchange-board-of-india-research-analysts-regulations-2014-last-amended-on-october-10-2026-_105294.html
-- SEBI investor information on investment advisers: https://investor.sebi.gov.in/investment_advisor.html
+Any Node host works too: `npm run build && npm start` behind HTTPS.
 
-## 7. Quality checks
+At start-up in production the server logs a warning for any missing critical
+configuration (site URL, Sheets credentials, Redis). Check the deployment logs
+after the first deploy.
 
-```bash
-npm run typecheck
-npm run lint
-npm run build
-npm run start
-```
+## Documentation
 
-Also test the actual form submission after Google Sheets credentials are set, and test the site on a narrow mobile screen, tablet and desktop. Check all phone/social links, legal copy, page titles, contact information, Search Console verification and the live spreadsheet permissions before launch.
+- [`docs/GOOGLE-SHEETS-SETUP.md`](docs/GOOGLE-SHEETS-SETUP.md): exact Google Cloud and spreadsheet steps
+- [`docs/BUSINESS-INFO-REQUIRED.md`](docs/BUSINESS-INFO-REQUIRED.md): details the business still needs to supply, and the regulatory review
+- [`docs/TESTING-REPORT.md`](docs/TESTING-REPORT.md): what was tested, how, and what was not

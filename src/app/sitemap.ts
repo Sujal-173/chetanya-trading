@@ -1,22 +1,38 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/config/site";
-import { insights } from "@/content/site-content";
+import { absoluteUrl, siteConfig } from "@/config/site";
+import { getAllArticles, usedCategories } from "@/content/insights";
+
+// Update when page copy changes; the sitemap should report real content dates.
+const SITE_CONTENT_UPDATED = "2026-11-08";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/about", "/services", "/approach", "/insights", "/contact", "/privacy-policy", "/terms", "/disclaimer"];
-  const now = new Date();
+  const core = ["/", "/about", "/services", "/approach", "/insights", "/contact"];
+  const legal = siteConfig.footerLinks.legal.map((link) => link.href);
+
   return [
-    ...routes.map((path) => ({
-      url: `${siteConfig.url}${path}`,
-      lastModified: now,
-      changeFrequency: path === "" ? "weekly" as const : "monthly" as const,
-      priority: path === "" ? 1 : path === "/services" || path === "/contact" ? 0.85 : 0.65,
+    ...core.map((path) => ({
+      url: absoluteUrl(path),
+      lastModified: SITE_CONTENT_UPDATED,
+      changeFrequency: path === "/insights" ? ("weekly" as const) : ("monthly" as const),
+      priority: path === "/" ? 1 : 0.8,
     })),
-    ...insights.map((item) => ({
-      url: `${siteConfig.url}/insights/${item.slug}`,
-      lastModified: now,
+    ...usedCategories().map((category) => ({
+      url: absoluteUrl(`/insights/category/${category}`),
+      lastModified: SITE_CONTENT_UPDATED,
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    })),
+    ...getAllArticles().map((article) => ({
+      url: absoluteUrl(`/insights/${article.slug}`),
+      lastModified: article.updatedAt ?? article.publishedAt,
       changeFrequency: "monthly" as const,
-      priority: 0.55,
+      priority: 0.6,
+    })),
+    ...legal.map((path) => ({
+      url: absoluteUrl(path),
+      lastModified: siteConfig.legal.policiesLastUpdated,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
     })),
   ];
 }

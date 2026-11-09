@@ -1,71 +1,36 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Clock3 } from "lucide-react";
-import { PageHero } from "@/components/page-hero";
-import { insights } from "@/content/site-content";
+import { articleCategories, getAllArticles, usedCategories } from "@/content/insights";
+import { buildMetadata, webPageSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/ui/json-ld";
+import { PageHeader } from "@/components/ui/page-header";
+import { ArticleList } from "@/components/sections/article-list";
 
-export const metadata: Metadata = {
-  title: "Trading Insights and Market Research",
-  description:
-    "Read practical explainers from chaitanya Trading Consultancy on risk planning, market context and building a more disciplined trading process.",
-  alternates: { canonical: "/insights" },
-};
+const title = "Insights";
+const description =
+  "Original explainers from CHAITANYA Trading Consultancy on market research, risk awareness and building a consistent trading process. General information only.";
+
+export const metadata = buildMetadata({ title, description, path: "/insights" });
 
 export default function InsightsPage() {
   return (
     <>
-      <PageHero
-        eyebrow="INSIGHTS & PERSPECTIVES"
-        title="Clear thinking for complex markets."
-        description="Practical explainers on market research, trading preparation and risk awareness. These articles are general information, not personalised investment recommendations."
-        image="/images/workspace-detail.webp"
-        imageAlt="Notebook and market research workspace"
+      <JsonLd data={webPageSchema({ name: title, description, path: "/insights", type: "CollectionPage" })} />
+      <PageHeader
+        title="Notes on markets, risk and process."
+        intro="Original explainers written to help you think more clearly. They are general information, not personalised recommendations, and not commentary on current market conditions."
+        trail={[{ name: "Insights", path: "/insights" }]}
       />
       <section className="section">
         <div className="container">
-          <div className="insight-grid">
-            {insights.map((article, index) => (
-              <article className="insight-card" key={article.slug}>
-                <div
-                  className={`insight-card__art insight-card__art--${index + 1}`}
-                >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div className="insight-card__chart" aria-hidden="true">
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                  </div>
-                </div>
-                <div className="insight-card__body">
-                  <span className="insight-category">{article.category}</span>
-                  <h2>{article.title}</h2>
-                  <p>{article.excerpt}</p>
-                  <div className="insight-card__meta">
-                    <span>
-                      <Clock3 size={14} />
-                      {article.readTime}
-                    </span>
-                    <Link
-                      href={`/insights/${article.slug}`}
-                      aria-label={`Read ${article.title}`}
-                    >
-                      Read article <ArrowUpRight size={15} />
-                    </Link>
-                  </div>
-                </div>
-              </article>
+          <nav aria-label="Insight categories" className="chips">
+            <span aria-current="page">All</span>
+            {usedCategories().map((id) => (
+              <Link key={id} href={`/insights/category/${id}`}>
+                {articleCategories[id].label}
+              </Link>
             ))}
-          </div>
-          <p className="insights-disclaimer">
-            Market commentary and educational content can become outdated as
-            conditions change. Always assess current information and your own
-            circumstances before making financial decisions.
-          </p>
+          </nav>
+          <ArticleList items={getAllArticles()} headingLevel="h2" />
         </div>
       </section>
     </>

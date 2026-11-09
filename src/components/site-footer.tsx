@@ -6,6 +6,7 @@ import { BrandLogo } from "@/components/logo";
 import { FooterConsultationButton } from "@/components/footer-consultation-button";
 
 export function SiteFooter() {
+  const { contact } = siteConfig;
   const year = new Date().getFullYear();
   const hasSocial = siteConfig.social.linkedin || siteConfig.social.instagram || siteConfig.social.youtube;
 
@@ -33,10 +34,10 @@ export function SiteFooter() {
         </div>
         <div className="footer-column footer-contact">
           <h3>Contact Information</h3>
-          {siteConfig.phone ? <a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}><Phone size={16} />{siteConfig.phone}</a> : null}
-          {siteConfig.email ? <a href={`mailto:${siteConfig.email}`}><Mail size={16} />{siteConfig.email}</a> : null}
-          <span><MapPin size={16} />{siteConfig.city}, {siteConfig.region}, {siteConfig.country}</span>
-          {!siteConfig.phone && !siteConfig.email ? <p>Use the enquiry form to start a conversation with our team.</p> : null}
+          {contact.phone && contact.phoneHref ? <a href={contact.phoneHref}><Phone size={16} />{contact.phone}</a> : null}
+          {contact.email ? <a href={`mailto:${contact.email}`}><Mail size={16} />{contact.email}</a> : null}
+          <span><MapPin size={16} />{contact.city}, {contact.region}, {contact.country}</span>
+          {!contact.phone && !contact.email ? <p>Use the enquiry form to start a conversation with our team.</p> : null}
         </div>
         <div className="footer-action">
           <h3>Start a Conversation</h3>
