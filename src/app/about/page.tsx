@@ -10,7 +10,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 const title = "About";
 const description =
-  "CHAITANYA Trading Consultancy is built on research, transparency and risk awareness. Read our philosophy, vision, mission and the values we work by.";
+  "Learn what guides CHAITANYA Trading Consultancy, how we approach market questions and the boundaries we keep around our work.";
 
 export const metadata = buildMetadata({ title, description, path: "/about" });
 
@@ -19,7 +19,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={webPageSchema({ name: title, description, path: "/about", type: "AboutPage" })} />
       <PageHeader
-        title="A consultancy built around clear thinking."
+        title="A thoughtful place to discuss the markets."
         intro={about.intro[0]}
         trail={[{ name: "About", path: "/about" }]}
       />
@@ -59,7 +59,7 @@ export default function AboutPage() {
             <h2 id="values-title" className="section-head__title">
               Core values
             </h2>
-            <p className="section-head__text">The commitments we hold ourselves to in every conversation.</p>
+            <p className="section-head__text">The principles that guide the way we prepare, explain and discuss our work.</p>
           </Reveal>
           <dl className="values">
             {about.values.map((value, index) => (

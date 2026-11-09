@@ -13,7 +13,7 @@ import { FaqSection } from "@/components/sections/faq-section";
 import { ContactSection } from "@/components/sections/contact-section";
 
 const description =
-  "Research-led market perspectives, structured trading discussions and risk-aware planning from CHAITANYA Trading Consultancy. No signals, no guaranteed returns.";
+  "Talk through market conditions, trading methods and risk with CHAITANYA Trading Consultancy. Clear discussions, honest limits and no promises about market results.";
 
 export const metadata: Metadata = {
   title: { absolute: siteConfig.seo.defaultTitle },

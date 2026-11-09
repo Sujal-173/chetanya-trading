@@ -6,13 +6,15 @@ import { homeContent } from "@/content/home";
 
 export function Hero() {
   const { hero } = homeContent;
+  const [titleFirstLine, titleSecondLine] = hero.titleLines;
   return (
     <section className="hero theme-dark" aria-labelledby="hero-title">
       <div className="hero__inner">
         <div className="hero__copy">
+          <p className="hero__eyebrow">{hero.eyebrow}</p>
           <h1 id="hero-title" className="hero__title">
-            <span className="hero__line">Practical Market Guidance</span>{" "}
-            <span className="hero__line hero__line--2">for Disciplined Traders.</span>
+            <span className="hero__line">{titleFirstLine}</span>
+            <span className="hero__line hero__line--2">{titleSecondLine}</span>
           </h1>
           <p className="hero__text">{hero.description}</p>
           <div className="hero__actions">
@@ -34,6 +36,17 @@ export function Hero() {
             className="hero__image"
           />
         </div>
+      </div>
+      <div className="container hero__trust" role="group" aria-label="Our working principles">
+        {hero.principles.map((principle) => (
+          <div className="hero__trust-item" key={principle.number}>
+            <span className="hero__trust-mark" aria-hidden="true">{principle.number}</span>
+            <span className="hero__trust-copy">
+              <strong>{principle.title}</strong>
+              <span>{principle.description}</span>
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   );

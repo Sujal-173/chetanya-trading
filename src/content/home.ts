@@ -1,71 +1,89 @@
 export const homeContent = {
   hero: {
-    title: "Practical Market Guidance for Disciplined Traders.",
+    eyebrow: "Trading research & consultation",
+    titleLines: ["Make clearer trading decisions", "with a more considered process."],
+    principles: [
+      {
+        number: "01",
+        title: "Start with the evidence",
+        description: "Look at the market before drawing a conclusion.",
+      },
+      {
+        number: "02",
+        title: "Think through the downside",
+        description: "Consider what could go wrong, not only what could go right.",
+      },
+      {
+        number: "03",
+        title: "Keep the limits clear",
+        description: "Know what a discussion can and cannot offer.",
+      },
+    ],
     description:
-      "CHAITANYA Trading Consultancy focuses on research-driven market perspectives, structured trading discussions and disciplined decision-making. Our approach is centred on helping market participants understand market conditions, evaluate opportunities and recognise the importance of risk management.",
-    primaryCta: "Discuss Your Requirements",
-    secondaryCta: "Explore Our Approach",
-    note: "Trading involves risk, including loss of capital. We do not guarantee returns.",
+      "Markets move quickly. We help traders take a closer look at the market context, question the thinking behind an idea and consider the risks before making a decision.",
+    primaryCta: "Discuss a consultation",
+    secondaryCta: "See how we work",
+    note: "Trading involves risk, including the possible loss of capital. No outcome is guaranteed.",
   },
   intro: {
-    statement:
-      "We help traders understand the market they are in before they decide what to do about it.",
+    statement: "Take a step back. Understand the market before you act.",
     paragraphs: [
-      "CHAITANYA Trading Consultancy is a new consultancy. We are building it on a plain view of the work: look at the evidence, explain the reasoning, and take risk seriously from the first step.",
-      "That means conversations, not calls. You will not receive tips from us, and you will not be asked to act on a view you do not understand.",
+      "A chart or market headline rarely tells the whole story. We look at the information available, talk through what it may mean and identify the details that could change the picture.",
+      "Bring a market question, a strategy you already use or a decision you are weighing. The aim is to help you examine your reasoning, not to tell you what to buy or sell.",
     ],
     weDo: [
-      "Review market conditions and explain what we observe and why",
-      "Discuss scenarios, including the ones that go against the idea",
-      "Look at risk before looking at reward",
-      "Say plainly what a consultation can and cannot cover",
+      "Review price action, market conditions and relevant developments",
+      "Talk through more than one possible market scenario",
+      "Consider exposure, invalidation and the downside",
+      "Explain the scope and limits of each consultation clearly",
     ],
     weDoNot: [
-      "Sell trading signals or tips",
-      "Promise returns or any level of performance",
-      "Run courses, certifications or training programmes",
-      "Ask you to act on a view without understanding it",
+      "Sell buy or sell tips or trading signals",
+      "Promise profits or a particular level of performance",
+      "Manage client funds or place trades on another person's behalf",
+      "Present a market view as a certainty",
     ],
   },
   about: {
-    title: "A consultancy built on research and discipline.",
+    title: "A calmer way to look at trading decisions.",
     paragraphs: [
-      "We offer research-led market perspectives and structured discussion about trading decisions. The work is deliberately slow and specific: what is the market doing, what do we know, and what would change our mind.",
+      "CHAITANYA Trading Consultancy gives traders a place to talk through market questions and the thinking behind their decisions. The focus is on context, clear reasoning and an honest look at risk.",
+      "Every market view has limits. We explain how we reached an observation, what could challenge it and where the discussion must stop. We do not sell tips, promise returns or place trades for clients.",
     ],
     reasons: [
       {
-        title: "Research comes before opinion",
-        text: "We start with what can be observed and say where the evidence ends.",
+        title: "A fresh look at the idea",
+        text: "Step outside your own assumptions and consider what the available information actually says.",
       },
       {
-        title: "Risk is part of the plan",
-        text: "Every discussion covers the downside as carefully as the idea itself.",
+        title: "A plan that includes risk",
+        text: "Think about invalidation, exposure and an adverse move before focusing on a possible gain.",
       },
       {
-        title: "Plain language",
-        text: "Explanations in clear words, with the reasoning visible and open to question.",
+        title: "Room to ask questions",
+        text: "Work through the reasoning in plain language, without pressure to act on a particular view.",
       },
     ],
   },
   philosophy: {
     statement:
-      "A view on the market is only half of a plan. The other half is what you will do if it is wrong.",
+      "A trading idea is only part of the decision. You also need to know what could prove it wrong.",
     paragraphs: [
-      "Research tells you what the market looks like. Risk management decides what you do when it does not behave that way. We treat both as one piece of work and never present one without the other.",
-      "No chart, indicator or analysis can predict the future with certainty. What good research can do is organise the evidence, define the scenarios and make the uncertainty easier to see.",
+      "It is easy to focus on the outcome we hope to see. A more useful review also considers the less favourable possibilities: what could change the market, where the idea stops making sense and how much is at stake.",
+      "No chart, indicator or analyst can remove uncertainty. A careful process can make the assumptions visible and give you a clearer basis for reviewing a decision later.",
     ],
     principles: [
       {
-        title: "Evidence over conviction",
-        text: "Observable information carries more weight than how strongly someone feels.",
+        title: "Check the evidence",
+        text: "Separate what the market is showing from what you expect it to do.",
       },
       {
-        title: "Invalidation before entry",
-        text: "Know what would prove the idea wrong before you rely on it.",
+        title: "Know your conditions",
+        text: "Be clear about the events or price behaviour that would change your view.",
       },
       {
-        title: "Process over outcome",
-        text: "Judge a decision by its reasoning at the time, not only by the result.",
+        title: "Review the decision",
+        text: "Look at the quality of the reasoning, not just the final profit or loss.",
       },
     ],
   },

@@ -9,7 +9,7 @@ import { ServiceIndex } from "@/components/sections/service-index";
 
 const title = "Services";
 const description =
-  "Market research and analysis, trading consultation, strategy discussion and a risk management perspective. See what each service covers, how it works and its limits.";
+  "Explore market research, trading consultations, strategy discussions and risk-focused reviews. Find out what each service covers before getting in touch.";
 
 export const metadata = buildMetadata({ title, description, path: "/services" });
 
@@ -18,8 +18,8 @@ export default function ServicesPage() {
     <>
       <JsonLd data={[webPageSchema({ name: title, description, path: "/services" }), ...services.map(serviceSchema)]} />
       <PageHeader
-        title="Consultation services, described plainly."
-        intro="Every service is a discussion. Below, you will find what each one covers, how it works, what you can expect and, just as important, what it cannot do."
+        title="A closer look at the questions behind your trades."
+        intro="Choose the topic closest to what you want to work through. Each service page explains what we can discuss, how a session is handled and where its limits are."
         trail={[{ name: "Services", path: "/services" }]}
       />
 

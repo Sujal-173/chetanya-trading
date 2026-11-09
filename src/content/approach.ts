@@ -9,50 +9,50 @@ export type ApproachStep = {
 export const approachSteps: ApproachStep[] = [
   {
     number: "01",
-    title: "Understand",
-    summary: "Start with your objectives and requirements.",
+    title: "Understand the question",
+    summary: "Start with what you want to work through.",
     detail:
-      "Every conversation begins with you. We ask what you trade, over what time horizon, and what you want from the discussion. We also agree what is outside its scope.",
+      "We begin by understanding the market or method you have in mind, the decision you are considering and what you want from the conversation. We also agree on the limits of the discussion.",
     points: [
-      "Your objectives and constraints",
-      "How you currently reach decisions",
-      "The scope of the consultation",
+      "The market, instrument or strategy you want to discuss",
+      "Your current approach and the question behind it",
+      "What the consultation can reasonably cover",
     ],
   },
   {
     number: "02",
-    title: "Analyse",
-    summary: "Review market conditions and the information available.",
+    title: "Review the information",
+    summary: "Look at the context before forming a view.",
     detail:
-      "We look at observable information: structure, volatility, participation and scheduled events. The aim is to separate what is known from what is assumed.",
+      "We review the information relevant to your question. This may include price structure, volatility, trading activity, timeframes and scheduled events. We distinguish what is visible from what is assumed.",
     points: [
-      "Market structure and context",
-      "Relevant events and developments",
-      "Gaps in the available information",
+      "The wider market and relevant timeframes",
+      "Price areas, volatility and participation",
+      "Information that is missing or still uncertain",
     ],
   },
   {
     number: "03",
-    title: "Discuss",
-    summary: "Explain observations, possible scenarios and risks.",
+    title: "Talk through the possibilities",
+    summary: "Consider different outcomes and the risks involved.",
     detail:
-      "We explain what we see and why, set out more than one scenario, and spend as much time on what could go wrong as on what could go right.",
+      "We explain the observations and discuss more than one possible scenario. That includes the conditions that could support the idea and the developments that could weaken or invalidate it.",
     points: [
-      "Scenarios, including adverse ones",
-      "The risks attached to each",
-      "Questions worth answering before acting",
+      "The reasoning behind the current view",
+      "Alternative and adverse scenarios",
+      "The risks and questions to consider before acting",
     ],
   },
   {
     number: "04",
-    title: "Review",
-    summary: "Discuss the approach and the considerations that matter.",
+    title: "Review the process",
+    summary: "Leave with clearer questions and a basis for review.",
     detail:
-      "We go back over the reasoning and the process, not only the result. A good decision can have a poor outcome, and a poor decision can be lucky.",
+      "We revisit the assumptions and the decision process so you can see what deserves further attention. The purpose is not to judge a trade only by its result, but to understand how the decision was made.",
     points: [
-      "What was known at the time",
-      "Whether the plan was followed",
-      "What can reasonably be improved",
+      "What was known when the decision was considered",
+      "Which parts of the plan were followed or changed",
+      "What you may want to record and review next time",
     ],
   },
 ];

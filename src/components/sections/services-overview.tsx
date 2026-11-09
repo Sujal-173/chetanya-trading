@@ -11,21 +11,21 @@ export function ServicesOverview() {
             How we can help
           </h2>
           <p className="section-head__text">
-            Each service is a discussion, not a product. We explain what it covers, how it works and what
-            it cannot do before you commit to anything.
+            Choose the area closest to your question. Each service has a clear scope, so you know what to
+            expect before you send an enquiry.
           </p>
         </Reveal>
         <ul className="service-rows">
-          {services.map((service) => (
-            <li key={service.slug}>
+          {services.map((service, index) => (
+            <Reveal as="li" key={service.slug} delay={index * 75}>
               <Link href={`/services#${service.slug}`} className="service-row">
                 <h3 className="service-row__title">{service.title}</h3>
                 <p className="service-row__text">{service.summary}</p>
                 <span className="service-row__more">
-                  Details<span className="sr-only"> about {service.title}</span>
+                  Explore service<span className="sr-only">: {service.title}</span>
                 </span>
               </Link>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

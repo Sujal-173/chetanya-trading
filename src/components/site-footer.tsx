@@ -15,7 +15,7 @@ export function SiteFooter() {
       <div className="footer-main container">
         <div className="footer-brand">
           <BrandLogo compact />
-          <p>Research-led market perspectives, practical trading discussions and a disciplined approach to market decisions.</p>
+          <p>Clear conversations about market conditions, trading methods and the risks behind a decision.</p>
           {hasSocial ? (
             <div className="footer-social" aria-label="Social media links">
               {siteConfig.social.linkedin ? <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><ExternalLink size={17} /></a> : null}
@@ -52,7 +52,7 @@ export function SiteFooter() {
           <Link href="/terms">Terms</Link>
           <Link href="/disclaimer">Disclaimer</Link>
         </nav>
-        <span className="footer-credit">Built for clarity. Designed for every screen.</span>
+        <span className="footer-credit">Designed &amp; developed by Sujal Patidar (Aventra Creative), Indore.</span>
       </div>
     </footer>
   );

@@ -1,129 +1,124 @@
 import type { Article } from "./types";
 
-/**
- * To publish a new article, add an object to this array. Listings, article
- * pages, category pages, related articles, the sitemap, structured data and
- * llms.txt all update automatically.
- *
- * Only publish original, reviewed content. Do not add live market commentary
- * or performance claims unless they have been verified.
- */
+/** Add only original, reviewed articles. Do not publish unverified performance claims or live market calls. */
 export const articles: Article[] = [
   {
     slug: "why-risk-planning-matters",
-    title: "Why risk planning belongs before the trade",
+    title: "Why it helps to think about risk before a trade",
     excerpt:
-      "A trading idea is incomplete until the downside, the invalidation point and the possible exposure have been considered.",
+      "Before focusing on a possible gain, take a moment to define the downside and the conditions that would change your mind.",
     category: "risk-awareness",
     publishedAt: "2026-11-08",
     sections: [
       {
         paragraphs: [
-          "A market view describes what may happen. A risk plan describes what you will do when the market behaves differently. When the two are treated as separate questions, a trader can end up with an attractive thesis and no practical response to an adverse move.",
+          "It is natural to notice the opportunity first. A chart looks interesting, a level is approaching or a piece of news has caught your attention. But an idea is not ready to assess until you have also considered what happens if the market moves the other way.",
         ],
       },
       {
-        heading: "Start from the downside",
+        heading: "Write down what would change your mind",
         paragraphs: [
-          "Most people begin with the idea and add risk at the end, if at all. Reversing the order changes the quality of the decision. If you first ask what would prove the idea wrong and what that would cost, you are forced to be specific about both.",
-          "Before taking exposure, it helps to be able to answer a short list of questions in writing.",
+          "An invalidation point is not just a line on a chart. It is the condition that tells you the original reasoning may no longer hold. Defining it early can help you avoid changing the rules in the middle of a trade.",
+          "Before taking exposure, make sure you can answer a few basic questions:",
         ],
         list: [
-          "What observable event would invalidate this idea?",
-          "How much am I prepared to lose if it does, and how does that relate to my total capital?",
-          "What happens to the position if there is a gap or a sudden rise in volatility?",
-          "How does this position overlap with exposure I already hold?",
+          "What would show that the original idea is no longer valid?",
+          "How much could be lost, and how does that fit with the rest of your exposure?",
+          "What might happen if price gaps or volatility rises suddenly?",
+          "Are there other positions that could be affected by the same move?",
         ],
       },
       {
-        heading: "Planning is not prediction",
+        heading: "A plan is not a prediction",
         paragraphs: [
-          "The purpose of a risk plan is not to forecast every outcome. It is to understand the range of outcomes you may face and decide, in advance and calmly, what level of risk is acceptable.",
-          "A plan made before the trade is almost always clearer than a decision made during one. Fear and hope both distort judgement once money is at stake, which is why the answers are better written down early.",
+          "Planning cannot tell you exactly what will happen. It helps you decide in advance how you will respond to a range of possibilities, rather than trying to make every decision under pressure.",
+          "The amount of risk you can accept depends on your own circumstances. It should not be chosen simply because a chart looks attractive.",
         ],
       },
       {
-        heading: "What a plan cannot do",
+        heading: "Be realistic about the limits",
         paragraphs: [
-          "Risk planning reduces surprises. It does not remove loss, and it does not make any individual trade a good one. Gaps, illiquidity and fast markets can all cause outcomes worse than the plan assumed. The honest version of a risk plan says so.",
+          "Stops can slip, liquidity can change and unexpected events can move prices quickly. A risk plan does not guarantee a maximum loss or make a trade safe. It is one part of a decision, and the possibility of loss remains.",
         ],
       },
     ],
   },
   {
     slug: "reading-market-context",
-    title: "Reading market context beyond a single chart pattern",
+    title: "Look beyond a single chart pattern",
     excerpt:
-      "Price structure, volume, volatility and the wider environment give context that no single signal can supply on its own.",
+      "A familiar pattern can mean different things in different conditions. The surrounding market context matters.",
     category: "market-research",
     publishedAt: "2026-11-08",
     sections: [
       {
         paragraphs: [
-          "A chart pattern is one piece of market information. The same pattern can behave differently depending on trend, volatility, liquidity, scheduled events and the timeframe being considered. Treating it as a standalone signal discards most of what matters.",
+          "A chart pattern can be useful, but it rarely tells the whole story. The same formation may behave differently in a strong trend, a narrow range or a market reacting to important news. Looking at the pattern alone can leave out details that matter.",
         ],
       },
       {
-        heading: "Begin with structure",
+        heading: "Start with the wider picture",
         paragraphs: [
-          "A fuller review starts wide. Identify the broader structure on a higher timeframe, mark the price areas that have mattered before, and note whether the market is trending, ranging or changing character. A pattern on a lower timeframe means something different inside each of those settings.",
+          "Before focusing on a short-term setup, look at the broader timeframe. Note the current structure, the price areas that have mattered and whether the market appears to be trending, ranging or changing direction. The aim is to understand the setting in which the pattern has appeared.",
         ],
       },
       {
-        heading: "Add participation and volatility",
+        heading: "Notice participation and volatility",
         paragraphs: [
-          "Volume and volatility describe how many people are involved and how much the price is moving. A move on thin participation tells a different story from the same move on heavy participation. Likewise, a calm market and a fast one call for different expectations of how far price can travel against you.",
+          "Trading activity and volatility add useful context. A price move on light activity may deserve a different interpretation from one accompanied by a sharp increase in participation. A fast market can also behave differently from a quiet one.",
         ],
         list: [
-          "Is the move supported by broad participation or confined to a narrow window?",
-          "Is volatility rising or falling compared with recent history?",
-          "Are there scheduled events nearby that could change the context?",
+          "Is the move broad-based or limited to a short period?",
+          "Has volatility changed compared with recent sessions?",
+          "Are there scheduled events that could affect the market?",
         ],
       },
       {
-        heading: "Ask what would change the view",
+        heading: "Keep an open mind",
         paragraphs: [
-          "Good analysis names its own weak points. For each reading, note what would confirm it and what would weaken it, then watch for those things instead of looking for reasons to keep the original view.",
-          "No indicator or chart layout predicts the future with certainty. Research is useful when it helps organise evidence, define scenarios and make uncertainty easier to see.",
+          "A good review considers what could support the current reading and what could weaken it. That is more useful than searching only for evidence that confirms the first impression.",
+          "No pattern or indicator can predict the next move with certainty. Context helps organise the available information; it does not remove uncertainty.",
         ],
       },
     ],
   },
   {
     slug: "building-a-trading-process",
-    title: "What makes a trading process more consistent?",
+    title: "Small habits that make a trading process easier to review",
     excerpt:
-      "Consistency begins with repeatable preparation, documented reasoning and a review process that is honest about mistakes.",
+      "Preparation, written reasoning and an honest review can make decisions easier to understand over time.",
     category: "trading-process",
     publishedAt: "2026-11-08",
     sections: [
       {
         paragraphs: [
-          "A repeatable process gives every decision a common structure. It may include market preparation, a written thesis, entry conditions, risk limits, an exit plan and a review afterwards. None of these guarantees a good result. Together they make decisions easier to evaluate.",
+          "A trading process does not need to be complicated. It needs to be clear enough that you can explain why you considered a trade, what would make you act and what would make you step away.",
         ],
       },
       {
-        heading: "Write the reasoning down",
+        heading: "Use the same preparation questions",
         paragraphs: [
-          "When the thesis and the risk are recorded before the trade, you can later tell the difference between a poor process and a reasonable plan that produced an unfavourable outcome. Without a record, memory fills the gap, and memory tends to flatter the person remembering.",
-        ],
-      },
-      {
-        heading: "Make review specific",
-        paragraphs: [
-          "Review is where a process improves, and it only works when it is concrete. Compare what you knew at the time with what happened afterwards, and ask whether the plan was followed.",
+          "A short checklist can keep preparation from becoming random. The details will differ from trader to trader, but the questions should be familiar each time.",
         ],
         list: [
-          "What was known when the decision was made?",
-          "What changed afterwards, and was it foreseeable?",
-          "Was the plan followed, and if not, why not?",
-          "What is one specific thing to change next time?",
+          "What is the broader market doing?",
+          "What is the reason for considering this trade now?",
+          "Which conditions need to be present before acting?",
+          "What is the risk, and what would invalidate the idea?",
+          "What would make you avoid the trade altogether?",
         ],
       },
       {
-        heading: "Judge decisions, not just results",
+        heading: "Record the reasoning, not just the result",
         paragraphs: [
-          "A good decision can lose money and a careless one can get lucky. Judging every decision only by profit or loss teaches the wrong lessons. A consistent process keeps attention on the quality of reasoning, which is the part within your control.",
+          "A journal is more useful when it captures what you knew at the time. Note the market context, the reason for the decision, the planned risk and any change you made. A screenshot or a short note can be enough if it is consistent.",
+        ],
+      },
+      {
+        heading: "Review without rewriting history",
+        paragraphs: [
+          "After the trade, compare the decision with the plan. A losing trade is not automatically a bad decision, and a profitable trade is not proof that the process was sound. Look for repeated patterns in your preparation and execution, then decide what is worth changing.",
+          "A process will not make every outcome favourable. Its value is that it gives you something concrete to examine and improve.",
         ],
       },
     ],

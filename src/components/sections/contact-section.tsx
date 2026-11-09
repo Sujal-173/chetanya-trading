@@ -8,11 +8,11 @@ export function ContactSection({ source = "home_contact" }: { source?: string })
       <div className="container contact">
         <Reveal className="contact__copy">
           <h2 id="contact-title" className="section-title">
-            Tell us what you would like to discuss.
+            What would you like to talk through?
           </h2>
           <p>
-            Share a few details and what you have in mind. We will reply to confirm what a consultation
-            can cover before anything begins.
+            Send us a few details about the market, strategy or decision on your mind. We will review your
+            enquiry and get back to you about the next step.
           </p>
           <ContactDetails />
         </Reveal>

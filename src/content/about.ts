@@ -1,49 +1,49 @@
 export const aboutContent = {
   intro: [
-    "CHAITANYA Trading Consultancy is a new consultancy built around one idea: a trading decision is easier to trust when you can explain it, and easier to live with when you have already thought about how it could go wrong.",
-    "We offer discussion, research perspective and structured review. We do not sell signals, run courses or promise returns. What we offer is a careful second opinion on how you read the market and how you plan around risk.",
+    "CHAITANYA Trading Consultancy is for traders who want to think more carefully about the markets and the decisions they make. We make space for questions, a closer look at the available information and a practical discussion about risk.",
+    "The work is discussion-based. We do not sell trading signals, manage money or promise returns. Before a consultation begins, we explain what can be covered and what remains outside its scope.",
   ],
   philosophy: {
-    title: "Our philosophy",
+    title: "A practical point of view",
     paragraphs: [
-      "Markets are uncertain, and that uncertainty does not go away with better tools or more confidence. The most useful thing a consultant can do is help a trader see the decision more clearly: what is known, what is assumed and what would change the view.",
-      "We prefer questions that expose reasoning to claims that sound certain. If a view cannot be explained simply, it is probably not ready to be acted on.",
+      "Markets are uncertain. More indicators or stronger opinions do not change that. What can help is knowing why you hold a view, what assumptions it depends on and what would make you reconsider it.",
+      "We prefer an honest question to an overconfident answer. If the available information is incomplete, that should be part of the conversation too.",
     ],
   },
   vision:
-    "A market culture where decisions are documented, risk is understood before it is taken and nobody is promised an outcome the market cannot guarantee.",
+    "A more thoughtful approach to markets, where people understand the risks they are taking and can explain the reasons behind their decisions.",
   mission:
-    "To give market participants an honest, research-led place to think through their trading decisions, and to communicate responsibly while we do it.",
+    "To offer clear, considered conversations about market context, trading methods and risk, without pressure or promises about results.",
   values: [
     {
-      title: "Research before opinion",
-      text: "We start from observable information and say clearly where it runs out. A view comes after the evidence, not before it.",
+      title: "Be guided by evidence",
+      text: "Start with information that can be observed. Be open about assumptions and acknowledge when the available facts do not support a firm conclusion.",
     },
     {
-      title: "Transparency about scope",
-      text: "Before any work begins, we explain what a consultation covers, how it works and what it cannot do.",
+      title: "Be clear about the work",
+      text: "Explain what a consultation includes, how it will be handled and what it cannot provide before agreeing to proceed.",
     },
     {
-      title: "Risk awareness",
-      text: "We look at what could go wrong first. A plan that only describes the favourable outcome is incomplete.",
+      title: "Take risk seriously",
+      text: "Discuss the downside as part of the decision. A plan that only works in the best-case scenario is not a complete plan.",
     },
     {
-      title: "Responsible communication",
-      text: "We do not use urgency, guarantees or testimonials to persuade. We say what we know, and we say when we do not.",
+      title: "Speak plainly",
+      text: "Use direct language, avoid pressure and never present an uncertain market view as a guaranteed outcome.",
     },
   ],
   research: {
-    title: "A research-oriented approach",
+    title: "How we look at the market",
     paragraphs: [
-      "Research here means organising evidence, not forecasting. We look at structure, volatility, participation and scheduled events, define scenarios, and note what would confirm or weaken each one.",
-      "We keep the work reviewable. When reasoning is written down, it can be tested against what happened and improved. That is how a process becomes more consistent over time.",
+      "A useful market review looks beyond one candle or chart pattern. Depending on the question, it may consider price structure, volatility, trading activity, important levels and scheduled events.",
+      "We discuss what those details suggest, what they do not tell us and what could change the current reading. The result is a clearer set of considerations, not a prediction of what the market will do next.",
     ],
   },
   transparency: {
-    title: "Transparency and responsible communication",
+    title: "Straightforward about what we can show",
     paragraphs: [
-      "We do not publish performance figures, client testimonials or ratings. We have no verified track record to show yet, and we would rather say so than imply one.",
-      "Where we mention regulation, registration or permission, we state only what has been verified. Anything the business has not confirmed is left off the site.",
+      "We do not display performance claims, client ratings or testimonials that have not been independently verified. We would rather leave out a claim than give visitors the wrong impression.",
+      "Regulatory details are published only when the relevant information has been confirmed. Please read the risk disclosure to understand the limits of the information and services described on this website.",
     ],
   },
 } as const;

@@ -7,7 +7,7 @@ import { ArticleList } from "@/components/sections/article-list";
 
 const title = "Insights";
 const description =
-  "Original explainers from CHAITANYA Trading Consultancy on market research, risk awareness and building a consistent trading process. General information only.";
+  "Straightforward articles from CHAITANYA Trading Consultancy about reading markets, thinking about risk and reviewing a trading process. For general information only.";
 
 export const metadata = buildMetadata({ title, description, path: "/insights" });
 
@@ -16,8 +16,8 @@ export default function InsightsPage() {
     <>
       <JsonLd data={webPageSchema({ name: title, description, path: "/insights", type: "CollectionPage" })} />
       <PageHeader
-        title="Notes on markets, risk and process."
-        intro="Original explainers written to help you think more clearly. They are general information, not personalised recommendations, and not commentary on current market conditions."
+        title="Ideas to help you think through the markets."
+        intro="Read practical explainers on market context, risk and trading habits. These articles are for general information and are not personal recommendations or live market calls."
         trail={[{ name: "Insights", path: "/insights" }]}
       />
       <section className="section">

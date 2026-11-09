@@ -18,13 +18,13 @@ export const navigation = [
 ];
 
 export const heroContent = {
-  eyebrow: "TRADING CONSULTANCY",
-  title: "Practical Market Guidance for",
-  highlight: "Disciplined Traders",
+  eyebrow: "TRADING RESEARCH & CONSULTATION",
+  title: "Make clearer trading decisions with",
+  highlight: "a more considered process.",
   description:
-    "chaitanya Trading Consultancy provides research-based market insights, structured guidance and a practical approach to help you navigate the markets with clarity and discipline.",
-  primaryCta: "Our Approach",
-  secondaryCta: "Get in Touch",
+    "Talk through market conditions, the thinking behind a trading idea and the risks that deserve attention before you make a decision.",
+  primaryCta: "Our approach",
+  secondaryCta: "Get in touch",
 };
 
 export type ServiceItem = {
@@ -36,54 +36,54 @@ export type ServiceItem = {
 
 export const services: ServiceItem[] = [
   {
-    title: "Market Insights",
-    short: "Research-led views on market trends and key levels.",
+    title: "Market Research and Analysis",
+    short: "A closer look at price behaviour and market conditions.",
     description:
-      "Understand market structure, relevant developments and key areas of interest through a clear, research-led market perspective.",
+      "Review price structure, important levels, volatility and relevant developments to understand the setting around a market move.",
     icon: BarChart3,
   },
   {
     title: "Trading Consultation",
-    short: "Discuss trade ideas, planning and risk management approaches.",
+    short: "Talk through your questions and the way you approach a decision.",
     description:
-      "Have a structured discussion about your trading objectives, decision process and the factors you consider before taking market exposure.",
+      "Discuss your objectives, preparation habits and the questions you ask before deciding to take market exposure.",
     icon: MessagesSquare,
   },
   {
     title: "Strategy Discussion",
-    short: "Review your trading approach and current market scenarios.",
+    short: "Take a closer look at the rules behind your approach.",
     description:
-      "Review the logic behind a trading framework, discuss possible scenarios and identify where planning and discipline can be improved.",
+      "Examine the assumptions behind a method, the conditions it depends on and the situations in which it may not work as expected.",
     icon: Target,
   },
   {
-    title: "Risk & Trade Planning",
-    short: "Think through risk, position sizing and trade preparation.",
+    title: "Risk Management Perspective",
+    short: "Consider the downside before focusing on a possible gain.",
     description:
-      "Bring risk awareness into the planning process by considering invalidation levels, exposure, position sizing and the impact of adverse outcomes.",
+      "Talk through invalidation, exposure, position sizing and how an adverse move could affect the wider portfolio.",
     icon: ShieldCheck,
   },
 ];
 
 export const valuePillars = [
   {
-    title: "Research first",
-    text: "Market context before conclusions.",
+    title: "Start with evidence",
+    text: "Look at the available information first.",
     icon: BarChart3,
   },
   {
-    title: "Plan with intent",
-    text: "A structured view of each decision.",
+    title: "Question the idea",
+    text: "Consider what could change the picture.",
     icon: Compass,
   },
   {
-    title: "Respect risk",
-    text: "Risk awareness at every stage.",
+    title: "Respect the risk",
+    text: "Give the downside proper attention.",
     icon: ShieldCheck,
   },
   {
-    title: "Clear communication",
-    text: "Practical discussion, without noise.",
+    title: "Keep it clear",
+    text: "Understand the reasoning and its limits.",
     icon: UsersRound,
   },
 ];
@@ -91,59 +91,59 @@ export const valuePillars = [
 export const approachSteps = [
   {
     number: "01",
-    title: "Analyse",
+    title: "Understand",
     description:
-      "Study the market context, price behaviour and relevant information before forming a view.",
-    icon: BarChart3,
+      "Start with the market, method or decision you want to talk through and agree on the scope.",
+    icon: MessagesSquare,
   },
   {
     number: "02",
-    title: "Plan",
+    title: "Review",
     description:
-      "Define the scenario, the conditions that matter and the risk that must be considered.",
-    icon: Compass,
+      "Look at the available information, market context and assumptions behind the idea.",
+    icon: BarChart3,
   },
   {
     number: "03",
     title: "Discuss",
     description:
-      "Review the reasoning, alternatives and possible outcomes through a structured conversation.",
-    icon: MessagesSquare,
+      "Talk through different scenarios, the risks involved and the questions that remain.",
+    icon: Compass,
   },
   {
     number: "04",
-    title: "Review",
+    title: "Reflect",
     description:
-      "Reflect on decisions and process so that learning is based on evidence rather than emotion.",
+      "Review the reasoning and identify what may be useful to record or examine further.",
     icon: ShieldCheck,
   },
 ];
 
 export const faqs = [
   {
-    question: "What does chaitanya Trading Consultancy do?",
+    question: "What can I discuss with CHAITANYA Trading Consultancy?",
     answer:
-      "chaitanya Trading Consultancy focuses on market research perspectives, structured trading discussions, strategy review and risk-aware planning. The exact scope of each engagement is discussed clearly before any service begins.",
+      "You can enquire about market research, your trading process, a strategy you already use or the risks around an idea.",
   },
   {
-    question: "Does the consultancy guarantee profits or fixed returns?",
+    question: "Do you provide trading tips or signals?",
     answer:
-      "No. Market outcomes are uncertain. No trading method, market view or discussion can guarantee profits or remove the risk of loss.",
+      "No. We do not sell trading tips or signals. You remain responsible for every trading decision.",
   },
   {
-    question: "Can I discuss my existing trading strategy?",
+    question: "Can I ask about a strategy I already use?",
     answer:
-      "Yes. You can use the enquiry form to request a discussion about your trading process, market research approach or planning framework. The team will confirm the scope before proceeding.",
+      "Yes. You can request a discussion about its logic, assumptions and the conditions in which it may struggle. We do not certify strategies or promise results.",
   },
   {
-    question: "Does the website provide buy or sell recommendations?",
+    question: "Do you guarantee profits or fixed returns?",
     answer:
-      "The website shares general information about the consultancy. Any security-specific or personalised investment advice must only be offered where the provider is appropriately registered and permitted to do so under applicable regulations.",
+      "No. Markets are uncertain, and trading can result in losses. No discussion or market view can guarantee a result.",
   },
   {
     question: "How do I request a consultation?",
     answer:
-      "Complete the enquiry form with your name, contact details and the topic you would like to discuss. The team can then review your enquiry and respond using the details you provide.",
+      "Send an enquiry through the contact form with a short note about the topic you have in mind. We will get back to you about the next step.",
   },
 ];
 
@@ -151,40 +151,40 @@ export const insights = [
   {
     slug: "why-risk-planning-matters",
     category: "Risk awareness",
-    title: "Why risk planning belongs before the trade",
+    title: "Why it helps to think about risk before a trade",
     excerpt:
-      "A trading idea is incomplete until the downside, invalidation point and possible exposure have been considered.",
+      "Define the downside and the conditions that would change your mind before focusing on a possible gain.",
     readTime: "4 min read",
     paragraphs: [
-      "A market view describes what may happen. A risk plan describes what you will do when the market behaves differently. Treating those two questions separately can leave a trader with an attractive thesis but no practical response to an adverse move.",
-      "Before taking exposure, consider the conditions that would invalidate the idea, the amount at risk, the effect of gaps or volatility, and how the position fits with other open exposure. These questions do not remove uncertainty, but they make the decision process more deliberate.",
-      "The purpose of risk planning is not to predict every outcome. It is to understand the range of outcomes you may face and decide in advance what level of risk is acceptable.",
+      "It is natural to notice the opportunity first. But a trade is not ready to assess until you have considered what happens if the market moves the other way.",
+      "Before taking exposure, think about the conditions that would invalidate the idea, the amount at risk, the effect of gaps or volatility and any exposure you already have.",
+      "A plan cannot predict every outcome or remove the possibility of loss. It can help you decide in advance how you will respond to different scenarios.",
     ],
   },
   {
     slug: "reading-market-context",
     category: "Market research",
-    title: "Reading market context beyond a single chart pattern",
+    title: "Look beyond a single chart pattern",
     excerpt:
-      "Price structure, volume, volatility and the broader market environment provide context that one signal cannot supply alone.",
+      "A familiar pattern can mean different things in different conditions. The surrounding market context matters.",
     readTime: "5 min read",
     paragraphs: [
-      "A chart pattern is only one piece of market information. The same pattern can behave differently depending on trend, volatility, liquidity, event risk and the timeframe being considered.",
-      "A more complete review starts with context. Identify the broader structure, mark relevant price areas, observe participation and ask what would confirm or weaken the current view. Keep the analysis focused on observable information rather than forcing a conclusion from a preferred pattern.",
-      "No indicator or chart layout predicts the future with certainty. Market research is useful when it helps organise evidence, define scenarios and clarify uncertainty.",
+      "A chart pattern is one part of market information. The same formation may behave differently in a trend, a range or a market reacting to important news.",
+      "Look at the wider structure, relevant price areas, participation and volatility before deciding what a pattern may be showing.",
+      "No pattern or indicator can tell you exactly what will happen next. Context helps organise the information; it does not remove uncertainty.",
     ],
   },
   {
     slug: "building-a-trading-process",
     category: "Trading process",
-    title: "What makes a trading process more consistent?",
+    title: "Small habits that make a trading process easier to review",
     excerpt:
-      "Consistency begins with repeatable preparation, documented reasoning and a review process that is honest about mistakes.",
+      "Preparation, written reasoning and an honest review can make decisions easier to understand over time.",
     readTime: "4 min read",
     paragraphs: [
-      "A repeatable trading process gives each decision a common structure. It may include market preparation, a written thesis, entry conditions, risk limits, an exit plan and a post-trade review.",
-      "The value of a process is not that it makes every trade successful. It makes decisions easier to evaluate. When the reasoning and risk are documented, a trader can distinguish a poor process from an acceptable plan that produced an unfavourable outcome.",
-      "Review should focus on evidence. Record what was known at the time, what changed, whether the plan was followed and what can reasonably be improved. Avoid judging a decision only by its final profit or loss.",
+      "A trading process should be clear enough that you can explain why you considered a trade, what would make you act and what would make you step away.",
+      "Record the market context, the reason for the decision, the planned risk and any changes you made. Keep the notes consistent so you can review them later.",
+      "A profitable outcome does not automatically mean the process was sound, just as a loss does not always mean the decision was poor. Review the reasoning and the execution, not only the result.",
     ],
   },
 ];

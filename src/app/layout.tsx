@@ -14,6 +14,7 @@ import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/sections.css";
 import "./styles/pages.css";
+import "./styles/premium.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

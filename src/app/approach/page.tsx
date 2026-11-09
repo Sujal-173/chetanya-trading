@@ -9,7 +9,7 @@ import { FaqSection } from "@/components/sections/faq-section";
 
 const title = "Our Approach";
 const description =
-  "How a CHAITANYA consultation works: understand your objectives, analyse market conditions, discuss scenarios and risks, and review the approach.";
+  "A look at how a CHAITANYA consultation moves from your initial question to a review of market context, possible scenarios and risk.";
 
 export const metadata = buildMetadata({ title, description, path: "/approach" });
 
@@ -18,8 +18,8 @@ export default function ApproachPage() {
     <>
       <JsonLd data={webPageSchema({ name: title, description, path: "/approach" })} />
       <PageHeader
-        title="A structured way to think through a decision."
-        intro="The process has four steps. It is the same whether the subject is a market view, a strategy or a risk plan, so you always know where a conversation stands."
+        title="A clear process for working through a market question."
+        intro="We begin with the question you bring, look at the information that matters and talk through possible outcomes. The scope is clear before the consultation moves ahead."
         trail={[{ name: "Approach", path: "/approach" }]}
       />
 

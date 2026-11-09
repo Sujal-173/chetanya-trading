@@ -12,7 +12,8 @@ export function Methodology() {
             How a consultation works
           </h2>
           <p className="section-head__text">
-            Four steps, in this order. Nothing moves forward until the previous step is clear to both sides.
+            We start with your question, look at the information that matters and finish by reviewing the
+            reasoning. You will know what each stage involves before we begin.
           </p>
         </Reveal>
         <ProcessTimeline steps={approachSteps} />

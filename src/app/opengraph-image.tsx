@@ -29,10 +29,10 @@ export default async function OpenGraphImage() {
         <img src={logoSrc} alt="" width={420} height={140} />
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 960 }}>
           <div style={{ fontSize: 70, lineHeight: 1.08, fontWeight: 700, letterSpacing: -1 }}>
-            Practical market guidance for disciplined traders.
+            Clearer thinking for considered trading decisions.
           </div>
           <div style={{ fontSize: 26, color: "#A9B8CE", marginTop: 26 }}>
-            Research-led perspectives. Structured discussion. Risk awareness.
+            Market context. Open discussion. A clear view of risk.
           </div>
         </div>
         <div style={{ display: "flex", height: 4, width: 120, background: "#1595FF" }} />

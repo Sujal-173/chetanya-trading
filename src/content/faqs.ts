@@ -1,50 +1,47 @@
 export type Faq = { question: string; answer: string; detail: string };
 
-/**
- * Visible FAQ content. The same data feeds the on-page accordion and the
- * FAQPage structured data so the markup always matches what visitors can read.
- */
+/** Shared by the visible FAQ and its structured data. */
 export const faqs: Faq[] = [
   {
-    question: "What does a trading consultancy do?",
+    question: "What can I discuss with CHAITANYA Trading Consultancy?",
     answer:
-      "A trading consultancy helps market participants think through their trading decisions. It does not trade on their behalf.",
+      "You can enquire about market research, your trading process, a strategy you already use or the risks around an idea.",
     detail:
-      "That usually means reviewing market conditions, discussing a trader's process and strategy, and looking carefully at risk. The consultant's role is to ask good questions and give a considered perspective. The decision, and the responsibility for it, stays with the trader.",
+      "The conversation depends on the question you bring. We will first understand what you want to discuss and confirm the scope. The service is discussion-based; it is not a direction to buy, sell or hold a security.",
   },
   {
-    question: "What services does CHAITANYA Trading Consultancy provide?",
+    question: "Do you provide trading tips or buy and sell signals?",
     answer:
-      "We offer market research and analysis, trading consultation, strategy discussion and a risk management perspective.",
+      "No. We do not sell trading tips or signals, and we do not ask clients to follow a market view without understanding it.",
     detail:
-      "Each service is a discussion-based engagement. We explain what it covers, how it works and what it cannot do before you commit to anything. The Services page sets this out in full.",
+      "The aim is to talk through market information, assumptions and possible scenarios. You remain responsible for deciding what to do with that information.",
   },
   {
-    question: "How does the consultation process work?",
+    question: "How do I arrange a consultation?",
     answer:
-      "It follows four steps: understand your objectives, analyse market conditions, discuss scenarios and risks, and review the approach.",
+      "Send an enquiry through the contact form and tell us what you would like to discuss.",
     detail:
-      "You start by sending an enquiry. We reply to confirm what you would like to discuss and what a consultation can cover. Nothing is started until the scope is clear to both sides.",
+      "We review the details you share and get back to you using your preferred contact method. We will confirm the proposed scope before anything is agreed. Sending an enquiry does not create an obligation to proceed.",
   },
   {
-    question: "Why is risk management important?",
+    question: "Can you review a trading strategy I already use?",
     answer:
-      "Because a trading idea is incomplete until you know what you will do if it is wrong.",
+      "You can ask for a discussion about the logic, assumptions and risk considerations behind your approach.",
     detail:
-      "Markets can move against any view. Deciding in advance how much you are willing to lose, and what would invalidate the idea, makes decisions calmer and easier to review. It does not remove the possibility of loss.",
+      "We can talk through the conditions your method depends on, the situations it may not suit and the questions worth checking against your own records. We do not certify a strategy or claim that it will be profitable.",
   },
   {
-    question: "Does the consultancy guarantee profits or returns?",
+    question: "Do you guarantee profits or trading results?",
     answer:
-      "No. No method, view or discussion can guarantee profit or remove the risk of loss.",
+      "No. Trading involves risk, and losses are possible. No market view or discussion can guarantee a result.",
     detail:
-      "We do not publish performance figures and we do not promise outcomes. Trading and investing involve risk, including the loss of capital.",
+      "Past performance does not establish future results. We do not promise a return, a success rate or the removal of risk. Read the risk disclosure before relying on information from this website.",
   },
   {
-    question: "How can someone contact the consultancy?",
+    question: "Do you manage funds or place trades for clients?",
     answer:
-      "Send an enquiry through the form on the Contact page or the Discuss your requirements button.",
+      "No. The services described on this website do not include managing client money or placing trades on another person's behalf.",
     detail:
-      "Your enquiry is saved to our enquiry records and reviewed by our team. Any phone or email details we publish appear on the Contact page.",
+      "Any trading or investment decision remains your responsibility. The information on this website is general in nature and should not be treated as personalised investment advice.",
   },
 ];

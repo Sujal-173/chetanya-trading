@@ -44,7 +44,7 @@ export const siteConfig = {
   /** Brand name as it appears in the logo lockup. */
   brandName: "CHAITANYA TRADING CONSULTANCY",
   shortName: "CHAITANYA",
-  tagline: "Practical market guidance for disciplined traders",
+  tagline: "Clearer thinking for considered trading decisions",
   url: resolveSiteUrl(),
   locale: "en-IN",
   logo: {
@@ -54,7 +54,7 @@ export const siteConfig = {
     height: 724,
   },
   description:
-    "CHAITANYA Trading Consultancy offers research-led market perspectives, structured trading discussions and risk-aware planning. We do not sell signals or promise returns.",
+    "CHAITANYA Trading Consultancy provides market research discussions and practical conversations about trading decisions, strategy and risk. No signals or guaranteed returns.",
   googleSiteVerification: clean(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION),
 
   contact: {
@@ -135,7 +135,7 @@ export const siteConfig = {
 
   seo: {
     titleTemplate: "%s | CHAITANYA Trading Consultancy",
-    defaultTitle: "CHAITANYA Trading Consultancy | Practical Market Guidance",
+    defaultTitle: "CHAITANYA Trading Consultancy | Market Research & Trading Consultation",
     keywords: [
       "trading consultancy",
       "market research India",

@@ -11,7 +11,7 @@ export function getOrganizationSchema() {
     "chaitanya Trading Consultancy";
   const description =
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION?.trim() ||
-    "Research-led market insights and practical trading consultancy focused on clarity, planning and risk awareness.";
+    "Market research discussions and practical conversations about trading decisions, strategy and risk.";
   const city = process.env.NEXT_PUBLIC_CITY?.trim() || "Indore";
   const region = process.env.NEXT_PUBLIC_REGION?.trim() || "Madhya Pradesh";
   const country = process.env.NEXT_PUBLIC_COUNTRY?.trim() || "India";

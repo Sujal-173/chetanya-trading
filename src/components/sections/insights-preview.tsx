@@ -13,8 +13,8 @@ export function InsightsPreview() {
             From our insights
           </h2>
           <p className="section-head__text">
-            Original explainers on market research, risk and process. General information only, never
-            personalised recommendations.
+            Short reads on market behaviour, risk and the habits that shape trading decisions. These
+            articles are for general information, not personal recommendations.
           </p>
         </Reveal>
         <ArticleList items={latest} />

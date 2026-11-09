@@ -7,7 +7,7 @@ import { ContactDetails } from "@/components/sections/contact-details";
 
 const title = "Contact";
 const description =
-  "Send an enquiry to CHAITANYA Trading Consultancy. Tell us what you would like to discuss and we will reply to confirm what a consultation can cover.";
+  "Contact CHAITANYA Trading Consultancy with a question about market research, trading discussions or the services listed on this website.";
 
 export const metadata = buildMetadata({ title, description, path: "/contact" });
 
@@ -16,8 +16,8 @@ export default function ContactPage() {
     <>
       <JsonLd data={webPageSchema({ name: title, description, path: "/contact", type: "ContactPage" })} />
       <PageHeader
-        title="Start with a short note about what you have in mind."
-        intro="You do not need to have everything worked out. Tell us the market, the question or the decision you are weighing, and we will reply to confirm what a consultation can and cannot cover."
+        title="Tell us what you would like to talk through."
+        intro="Share the market, strategy or decision you have in mind. We will review your message and get back to you to discuss the next step and the scope of a consultation."
         trail={[{ name: "Contact", path: "/contact" }]}
       />
       <section className="section">
@@ -27,9 +27,9 @@ export default function ContactPage() {
             <ContactDetails />
             <h3 className="prose__subhead">What happens after you send the form</h3>
             <ol className="steps">
-              <li>Your enquiry is recorded and given a reference number.</li>
-              <li>We reply to confirm what you would like to discuss and what a consultation covers.</li>
-              <li>You decide whether to go ahead. Nothing starts until the scope is clear.</li>
+              <li>Your message is recorded so the enquiry can be reviewed.</li>
+              <li>We contact you using the details you provided to clarify the topic and possible scope.</li>
+              <li>You decide how to proceed. An enquiry does not commit you to a consultation.</li>
             </ol>
           </Reveal>
           <Reveal className="contact__panel" delay={80}>
